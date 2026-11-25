@@ -1,0 +1,17 @@
+@startuml Proxy
+title Proxy
+' Uma camada de abstração onde é implementada ou o carregamento de dados ou a segurança dos dados
+' Proxy de dados é mais usada para acessos gradativos ao banco de dados
+hide members
+left to right direction
+
+class Aluno implements IAluno
+class AlunoProxy implements IAluno
+
+AlunoProxy ..> Aluno
+AlunoProxy ..> Funcionario
+Aluno ..> Funcionario
+Aluno ..> BD
+BD --> "0..*" Aluno
+
+@enduml
